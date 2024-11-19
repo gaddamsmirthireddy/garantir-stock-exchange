@@ -141,6 +141,17 @@
             background-color: crimson;
             position: absolute;
         }
+        .dropdown-content {
+            display: none;
+            margin-top: 10px;
+        }
+        ul {
+            padding-left: 1rem;
+            list-style-type: none;
+        }
+        ul.numbered {
+            list-style-type: decimal;
+        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -288,22 +299,29 @@
            
             <!-- Types of Stocks Card -->
              <!-- Types of Stocks Card -->
-            <div class="card">
+             <div class="card">
                 <h2>Types of Stocks</h2>
-                <p>Understand the various stock types available for trading and investing. Here is a comprehensive list:</p>
-                <ul style="color: #ccc; padding-left: 1rem; list-style-type: disc;">
-                    <li><strong>Income Stocks:</strong> Known for paying consistent and high dividends, suitable for investors seeking regular income.</li>
-                    <li><strong>Value Stocks:</strong> Typically trade at a lower price compared to their fundamentals, considered undervalued by investors.</li>
-                    <li><strong>Blue-Chip Stocks:</strong> Shares of large, established, and financially sound companies with a history of reliable performance.</li>
-                    <li><strong>Small-Cap Stocks:</strong> Stocks of smaller companies with market capitalizations under $2 billion. These carry higher growth potential but also higher risk.</li>
-                    <li><strong>Mid-Cap Stocks:</strong> Stocks of medium-sized companies with market capitalizations between $2 billion and $10 billion, balancing growth and stability.</li>
-                    <li><strong>Large-Cap Stocks:</strong> Stocks of large, established companies with market capitalizations over $10 billion. These are typically less risky.</li>
-                </ul>
-                <button class="dropdown-btn" onclick="toggleDropdown(this)">See More Details</button>
+                <p>Understand the various stock types available for trading and investing. Click below to see the list:</p>
+                <button class="dropdown-btn" onclick="toggleDropdown()">See List of Stocks</button>
                 <div class="dropdown-content">
-                    <p>Each stock type caters to different investor goals and risk appetites. Choose stocks based on your financial objectives and market conditions.</p>
+                    <ul class="numbered">
+                        <li>Income Stocks</li>
+                        <li>Value Stocks</li>
+                        <li>Blue-Chip Stocks</li>
+                        <li>Small-Cap Stocks</li>
+                        <li>Mid-Cap Stocks</li>
+                        <li>Large-Cap Stocks</li>
+                    </ul>
                 </div>
             </div>
+        
+            <script>
+                function toggleDropdown() {
+                    const content = document.querySelector('.dropdown-content');
+                    content.style.display = content.style.display === 'block' ? 'none' : 'block';
+                }
+            </script>
+           
 
             
 
