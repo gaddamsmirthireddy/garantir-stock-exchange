@@ -171,14 +171,66 @@
     <div class="container">
         <main class="grid-container">
             <!-- Share Portfolio Management Card (Full Width) -->
+            <!-- Share Portfolio Management Card (Full Width) -->
             <div class="card full-width">
                 <h2>Share Portfolio Management</h2>
-                <p>Manage and monitor your stock portfolio effectively.</p>
+                <p>Manage and monitor your stock portfolio effectively. Gain insights into your investments, past performance, and current trends to make informed decisions.</p>
                 <button class="dropdown-btn" onclick="toggleDropdown(this)">Portfolio Insights</button>
                 <div class="dropdown-content">
-                    <p>Top performers: Stock A - 25% growth, Stock B - 30% growth.</p>
+                    <h3>Investment Overview</h3>
+                    <ul>
+                        <li>Total Invested Amount: $50,000</li>
+                        <li>Current Portfolio Value: $62,000</li>
+                        <li>Overall Growth: 24%</li>
+                    </ul>
+                    <h3>Top Performing Stocks</h3>
+                    <table style="width: 100%; color: #ccc; border-collapse: collapse;">
+                        <thead>
+                            <tr>
+                                <th style="border-bottom: 1px solid #555; padding: 0.5rem; text-align: left;">Stock</th>
+                                <th style="border-bottom: 1px solid #555; padding: 0.5rem; text-align: left;">Invested</th>
+                                <th style="border-bottom: 1px solid #555; padding: 0.5rem; text-align: left;">Current Value</th>
+                                <th style="border-bottom: 1px solid #555; padding: 0.5rem; text-align: left;">Growth</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0.5rem;">Stock A</td>
+                                <td style="padding: 0.5rem;">$10,000</td>
+                                <td style="padding: 0.5rem;">$13,000</td>
+                                <td style="padding: 0.5rem; color: lightgreen;">+30%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.5rem;">Stock B</td>
+                                <td style="padding: 0.5rem;">$15,000</td>
+                                <td style="padding: 0.5rem;">$18,750</td>
+                                <td style="padding: 0.5rem; color: lightgreen;">+25%</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.5rem;">Stock C</td>
+                                <td style="padding: 0.5rem;">$5,000</td>
+                                <td style="padding: 0.5rem;">$4,500</td>
+                                <td style="padding: 0.5rem; color: red;">-10%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <h3>Recent Transactions</h3>
+                    <ul>
+                        <li>Purchased Stock A: 50 shares @ $200 each (10 days ago)</li>
+                        <li>Sold Stock D: 20 shares @ $150 each (5 days ago)</li>
+                        <li>Dividend Received: $500 from Stock B (1 week ago)</li>
+                    </ul>
+                    <h3>Performance Trends</h3>
+                    <p>Your portfolio has consistently outperformed the market average, with the highest growth observed in Q2 of this year. The sectors contributing the most are technology and healthcare.</p>
+                    <h3>Risk Assessment</h3>
+                    <ul>
+                        <li>High-Risk Stocks: Stock A, Stock C</li>
+                        <li>Low-Risk Stocks: Stock B, Stock D</li>
+                        <li>Portfolio Risk Level: Moderate</li>
+                    </ul>
                 </div>
             </div>
+
 
             <!-- Stock Exchange Listing Card -->
             <div class="card">
