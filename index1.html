@@ -1,6 +1,268 @@
-<p>iam a color.</p>
-<<<<<<< HEAD
-<p>this is a newest feature(buttonshere)</p>
-=======
-<p>this is a newest feature(dropdown)</p>
->>>>>>> feature1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Stock Exchange System</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #000; /* Deep black background */
+        }
+
+        /* Header Styles */
+        header {
+            text-align: center;
+            padding: 2rem;
+            color: crimson;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #eee;
+        }
+
+        /* Main Container */
+        .container {
+            padding: 1.5rem;
+            max-width: 1200px;
+            margin: 1.5rem auto;
+        }
+
+        /* Grid Container */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Card Styles */
+        .card {
+            background-color: rgba(255, 255, 255, 0.1); /* Glass effect */
+            color: #eee;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Softer shadow for glass effect */
+            backdrop-filter: blur(10px); /* Blur for glass effect */
+            transition: transform 0.5s ease-in-out; /* Smooth hover sliding */
+            position: relative;
+        }
+
+        .card h2 {
+            font-size: 1.5rem;
+            color: #eee;
+            margin-bottom: 1rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: #ccc;
+        }
+
+        /* Card Hover Effect */
+        .card:hover {
+            transform: translateY(-10px); /* Hover with smooth effect */
+        }
+
+        /* Dropdown Button */
+        .dropdown-btn {
+            background-color: rgba(255, 255, 255, 0.1); /* Matches glass theme */
+            color: #eee;
+            padding: 0.5rem;
+            font-size: 0.9rem;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 100%;
+            margin-top: 1rem;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+
+        .dropdown-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Dropdown Content */
+        .dropdown-content {
+            display: none;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 4px;
+            margin-top: 0.5rem;
+        }
+
+        /* Expanded Card Styles */
+        .card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        /* Graph Styling */
+        .graph {
+            width: 100%;
+            height: 100px;
+            background-color: rgba(80, 80, 80, 0.5);
+            margin-top: 1rem;
+            position: relative;
+        }
+
+        .bar {
+            width: 20px;
+            height: 60px;
+            background-color: #4CAF50;
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        /* Line Graph */
+        .line-graph {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .line {
+            width: 2px;
+            height: 50px;
+            background-color: crimson;
+            position: absolute;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .card h2 {
+                font-size: 1.3rem;
+            }
+
+            .card p {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Secure Stock Exchange System</h1>
+        <p>Buy, sell, and manage your stocks securely.</p>
+    </header>
+   
+    <div class="container">
+        <main class="grid-container">
+            <!-- Share Portfolio Management Card (Full Width) -->
+            <div class="card full-width">
+                <h2>Share Portfolio Management</h2>
+                <p>Manage and monitor your stock portfolio effectively.</p>
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">Portfolio Insights</button>
+                <div class="dropdown-content">
+                    <p>Top performers: Stock A - 25% growth, Stock B - 30% growth.</p>
+                </div>
+            </div>
+
+            <!-- Stock Exchange Listing Card -->
+            <div class="card">
+                <h2>Stock Exchange Listing</h2>
+                <p>Explore all available stocks in the market.</p>
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">More Info</button>
+                <div class="dropdown-content">
+                    <p>Stocks are listed according to market sectors, regions, and company size. Updated every minute.</p>
+                </div>
+            </div>
+           
+            <!-- Stock Options & Analysis Card -->
+            <div class="card">
+                <h2>Stock Options & Analysis</h2>
+                <p>Analyze stock options and get valuable insights.</p>
+                <div class="graph">
+                    <div class="line-graph">
+                        <div class="line" style="height: 40px;"></div>
+                        <div class="line" style="height: 60px;"></div>
+                        <div class="line" style="height: 80px;"></div>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- Stock Market Crash Alerts Card -->
+            <div class="card">
+                <h2>Market Crash Alerts</h2>
+                <p>Stay informed on significant market drops and crashes.</p>
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">See Recent Alerts</button>
+                <div class="dropdown-content">
+                    <p>Recent major crashes: Company X - 20% drop, Company Y - 15% drop.</p>
+                </div>
+            </div>
+           
+            <!-- Selling Stock Certificates Card -->
+            <div class="card">
+                <h2>Selling Stock Certificates</h2>
+                <p>Easily sell your stock certificates within the platform.</p>
+                <div class="graph">
+                    <div class="bar" style="height: 40px;"></div>
+                    <div class="bar" style="height: 60px;"></div>
+                    <div class="bar" style="height: 80px;"></div>
+                </div>
+            </div>
+
+            <!-- Stock Market Forecasts Card -->
+            <div class="card">
+                <h2>Stock Market Forecasts</h2>
+                <p>Get predictive insights into future stock trends.</p>
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">Forecast Details</button>
+                <div class="dropdown-content">
+                    <p>Expected growth rate for Q4: 5%. Market confidence index: 78%.</p>
+                </div>
+            </div>
+           
+            <!-- Types of Stocks Card -->
+            <div class="card">
+                <h2>Types of Stocks</h2>
+                <p>Understand different stock types available for trading.</p>
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">See Stock Types</button>
+                <div class="dropdown-content">
+                    <p>Common Stocks, Preferred Stocks, Growth Stocks, Income Stocks, etc.</p>
+                </div>
+            </div>
+           
+            <!-- Stock Option Valuation Card -->
+            <div class="card">
+                <h2>Stock Option Valuation</h2>
+                <p>Evaluate your stock options based on real-time data.</p>
+                <div class="graph">
+                    <div class="bar" style="height: 40px;"></div>
+                    <div class="bar" style="height: 70px;"></div>
+                    <div class="bar" style="height: 55px;"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function toggleDropdown(button) {
+            const dropdownContent = button.nextElementSibling;
+            dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+        }
+    </script>
+</body>
+</html>
+
