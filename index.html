@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Garantir Stock Exchange</title>
+  <!-- Link to CSS file for styling -->
+   <!-- Add this in your HTML <head> section -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css"> <!-- Ensure this is correct -->
+</head>
+<body>
+  <style>
+    /* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color:#0A2540;
+    color: white;
+    font-size: 32px; /* Base font size for the entire site */
+  }
+  
+  /* Landing Page */
+  #landing-page {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('src/assets/images/landingpage-bg.jpg') no-repeat center center;
+    background-size: cover;
+    padding: 10px; /* Adds space around the background content */
+    box-sizing: border-box; /* Ensures padding doesn't affect the total width/height */
+  }
+  .logo{
+    font-size:1 rem;
+    color:orange;
+  }
+  .auth-container {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(28, 59, 87, 0.9); /* Adds transparency for better contrast */
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .auth-container h1 {
+    color: orange;
+    font-size: 2rem; /* Larger title font size */
+  }
+  
+  .auth-container input {
+    width: 80%;
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem; /* Adjust input font size */
+  }
+  
+  .auth-container button {
+    background-color: orange;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem; /* Adjust button font size */
+  }
+  
+  /* Main Page */
+  .hidden {
+    display: none;
+  }
+  
+
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #0A2540;
+  }
+  
+  .navbar a {
+    font-size: 1.1rem; /* Increase navbar link font size */
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin: 0 1rem;
+  }
+  
+  .nav-links li a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  section {
+    padding: 2rem;
+    text-align: center;
+    font-size: 1.2rem; /* Increase font size for section text */
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #1C3B57;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-size: 1rem; /* Adjust footer font size */
+  }
+  /* Card Container */
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem; /* Space between cards */
+      margin: 2rem 0; /* Add spacing above and below the cards */
+    }
+
+    /* Individual Card */
+    .card {
+      background-color: #1C3B57;
+      color: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      width: 280px; /* Set a consistent card width */
+      text-align: center;
+    }
+
+    .card h3 {
+      color: orange;
+      margin-bottom: 1rem; /* Add space below the card title */
+      font-size: 1.5rem; /* Slightly larger title */
+    }
+
+    .card p {
+      font-size: 1rem; /* Standard font size for the text */
+      line-height: 1.5; /* Improve readability */
+    }
+    /* General Styling for About Us Section */
+#about-us {
+  padding: 2rem;
+  background-color: #1C3B57;
+  color: white;
+  font-size: 1.1rem;
+}
+
+#about-us h2 {
+  font-size: 2.5rem;
+  color: orange;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Styling for individual About Sections */
+.about-section {
+  margin-bottom: 2rem;
+}
+
+.about-section h3 {
+  font-size: 2rem;
+  color: orange;
+  margin-bottom: 1rem;
+}
+
+.about-section p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #d3d3d3;
+}
+
+.about-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.about-section ul li {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+/* Gallery Styling */
+.gallery {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+.user-profile {
+      position: relative;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .user-profile img {
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      object-fit: cover;
+      margin-left: 20px;
+    }
+    .profile-modal {
+      position: absolute;
+      top: 50px;
+      right: 0;
+      background-color:#0A2540;
+      padding: 20px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      width: 300px;
+      display: none;
+    }
+    .profile-modal h3 {
+      margin-bottom: 10px;
+    }
+    .profile-modal p {
+      margin: 5px 0;
+      color:black;
+    }
+    .profile-modal input {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
+    }
+    .profile-modal button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+      padding: 10px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .profile-modal button:hover {
+      background: #0056b3;
+    }
+
+
+  
+  </style>
+  
+  <!-- Landing Page -->
+  <section id="landing-page">
+    <div class="auth-container">
+      <h1>Garantir Stock Exchange</h1>
+      <p>Enter your phone number to get started</p>
+      <form id="auth-form">
+        <input type="tel" id="phone-number" placeholder="Enter your phone number" required>
+        <button type="submit">Authenticate</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Main Page (hidden initially) -->
+  <div id="main-page" class="hidden">
+    <header>
+      <div class="navbar">
+        <div class="logo">Garantir Stock-Exchange
+        </div>
+        <ul class="nav-links">
+          <li></li>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about-us">About Us</a></li>
+          <li><a href="#offering">Offering</a></li>
+          <li><a href="#trade">Sell/Buy Stocks</a></li>
+          <li><a href="#gainers-losers">Top Gainers/Losers</a></li>
+          <li><a href="#support">Support</a></li>
+        </ul>
+        <div class="user-profile" id="userProfile">
+          <img src="src/assets/images/usergarantir.png" alt="User Photo" id="userPhoto">
+        </div>
+      </div>
+    </header>
+    <div class="profile-modal" id="profileModal">
+      <h3>User Profile</h3>
+      <p><strong>Name:</strong> <span id="userName">John Doe</span></p>
+      <p><strong>Email:</strong> <span id="userEmail">john.doe@example.com</span></p>
+      <p><strong>Phone:</strong> <span id="userPhone">+1 234 567 890</span></p>
+      <p><strong>State:</strong> <span id="userState">California</span></p>
+      <p><strong>Country:</strong> <span id="userCountry">USA</span></p>
+      <hr>
+      <h4>Update Information</h4>
+      <form id="updateProfileForm">
+        <input type="text" id="updateName" placeholder="Enter Name" required><br>
+        <input type="email" id="updateEmail" placeholder="Enter Email" required><br>
+        <input type="tel" id="updatePhone" placeholder="Enter Phone" required><br>
+        <input type="text" id="updateState" placeholder="Enter State" required><br>
+        <input type="text" id="updateCountry" placeholder="Enter Country" required><br>
+        <button type="submit">Update</button>
+      </form>
+    </div>
+
+    <main>
+      <!-- Home Section -->
+      <section id="home">
+        <h2>Welcome to Garantir Stock Exchange</h2>
+        <p>Your trusted platform for seamless stock trading.</p>
+        <div class="search-container">
+            <input type="text" id="stock-symbol" placeholder="Enter Stock Symbol" />
+            <button id="search-button" onclick="searchStock()">Search</button>
+        </div>
+
+        <!-- Display Stock Data -->
+        <div id="stock-info" class="stock-info-container"></div>
+        <div class="card-container">
+          <!-- Card 1 -->
+          <div class="card">
+            <h3>Secure Trading</h3>
+            <p>Experience the highest level of security for all your trades. Our platform is built with advanced encryption and fraud detection technologies.</p>
+          </div>
+          <!-- Card 2 -->
+          <div class="card">
+            <h3>Real-Time Data</h3>
+            <p>Get accurate and real-time stock market data at your fingertips, empowering you to make informed trading decisions with confidence.</p>
+          </div>
+        </div> 
+        <div class="chart-container">
+          <canvas id="stock-chart"></canvas>
+      </div>
+        <a href="trade.html" id="start-trading">Start Trading</a>
+      </section>
+
+      <!-- About Us Section -->
+      <section id="about-us">
+        <h2>About Us</h2>
+        <p>Garantir Stock Exchange is dedicated to providing a transparent, efficient, and user-friendly trading platform. We aim to empower investors with cutting-edge technology, market insights, and secure trading options. Below, you will find more information about our services, products, events, awards, and guidelines.</p>
+      
+        <!-- Our Products Section -->
+        <div class="about-section">
+          <h3>Our Products</h3>
+          <p>We offer a wide range of financial products to help diversify your investment portfolio:</p>
+          <ul>
+            <li><strong>Equity Trading:</strong> Buy and sell stocks from a diverse range of companies.</li>
+            <li><strong>Mutual Funds:</strong> Invest in a range of mutual funds managed by top experts.</li>
+            <li><strong>Commodities:</strong> Trade in global commodities such as gold, oil, and agricultural products.</li>
+            <li><strong>Derivatives:</strong> Engage in future contracts, options, and other derivatives trading for hedging and speculation.</li>
+            <li><strong>Cryptocurrency:</strong> Participate in the rapidly growing cryptocurrency market with secure transactions.</li>
+          </ul>
+        </div>
+      
+        <!-- Our Services Section -->
+        <div class="about-section">
+          <h3>Our Services</h3>
+          <p>We are committed to offering the following services to our users:</p>
+          <ul>
+            <li><strong>Real-Time Market Data:</strong> Access up-to-the-minute data on market trends, stock prices, and more.</li>
+            <li><strong>Advanced Charting Tools:</strong> Utilize powerful charting tools to analyze and track market performance.</li>
+            <li><strong>24/7 Customer Support:</strong> Our dedicated support team is available around the clock to assist you with any queries or issues.</li>
+            <li><strong>Security & Privacy:</strong> We prioritize your security with robust encryption and industry-standard protection protocols.</li>
+            <li><strong>Educational Resources:</strong> Learn more about stock trading with our extensive collection of articles, guides, and tutorials.</li>
+          </ul>
+        </div>
+      
+        <!-- Events Section -->
+        <div class="about-section">
+          <h3>Events</h3>
+          <p>We host and participate in various events, both virtual and in-person, to keep our users informed and engaged:</p>
+          <ul>
+            <li><strong>Annual Stock Trading Summit:</strong> A gathering of industry experts, where we discuss the future of trading and finance.</li>
+            <li><strong>Webinars & Workshops:</strong> Join our regular online sessions where we provide insights into market trends and trading strategies.</li>
+            <li><strong>Networking Events:</strong> Exclusive meetups for investors, traders, and financial professionals to network and collaborate.</li>
+            <li><strong>Investor Education Programs:</strong> Programs aimed at educating new investors and beginners in stock trading.</li>
+          </ul>
+        </div>
+      
+        <!-- Gallery Section -->
+        <div class="about-section">
+          <h3>Gallery</h3>
+          <p>Explore highlights from our events and achievements:</p>
+          <div class="gallery">
+            <img src="src/assets/images/event1.jpg" alt="Event Image 1">
+            <img src="src/assets/images/event2.jpg.jpg" alt="Event Image 2">
+            <img src="src/assets/images/event3.jpg" alt="Event Image 3">
+            <img src="src/assets/images/event4.jpg" alt="Award Ceremony">
+          </div>
+        </div>
+      
+        <!-- Awards Section -->
+        <div class="about-section">
+          <h3>Awards & Recognition</h3>
+          <p>We are proud to have received numerous accolades for our services and commitment to excellence:</p>
+          <ul>
+            <li><strong>Best Stock Trading Platform of the Year 2023</strong> – Awarded by the International Finance Forum.</li>
+            <li><strong>Top Financial Services Innovation 2022</strong> – Recognized by FinTech Magazine for our cutting-edge trading tools.</li>
+            <li><strong>Security Excellence Award 2021</strong> – Presented by the Global Financial Security Association for our robust cybersecurity measures.</li>
+          </ul>
+        </div>
+      
+        <!-- Guidelines Section -->
+        <div class="about-section">
+          <h3>Guidelines</h3>
+          <p>We adhere to the highest standards of integrity and transparency. Below are our guidelines for both investors and employees:</p>
+          <ul>
+            <li><strong>Code of Ethics:</strong> We prioritize ethical business practices and transparent operations.</li>
+            <li><strong>Investor Protection:</strong> We are committed to safeguarding the interests of our investors with clear communication and fair market practices.</li>
+            <li><strong>Compliance with Regulations:</strong> We comply with all national and international regulatory frameworks to ensure lawful and ethical operations.</li>
+            <li><strong>Risk Management:</strong> We provide comprehensive risk management tools to help users make informed decisions and minimize exposure.</li>
+          </ul>
+        </div>
+      
+      </section>
+      
+      <!-- Offering Section -->
+      <section id="offering">
+        <h2>Our Offering</h2>
+        <div class="cards-container">
+            <div class="card" id="forex-card">
+                <h3>Forex</h3>
+                <p>Latest Forex exchange rates.</p>
+                <p id="forex-info">Loading...</p>
+                <button class="btn"><a href="offerings/forex.html" class="btn">Learn More</a></button>
+            </div>
+            <div class="card" id="crypto-card">
+                <h3>Cryptocurrencies</h3>
+                <p>Track the latest cryptocurrency prices.</p>
+                <p id="crypto-info">Loading...</p>
+                <button class="btn"><a href="offerings/cryptocurrencies.html" class="btn">Learn More</a></button>
+            </div>
+            <div class="card" id="commodities-card">
+                <h3>Commodities</h3>
+                <p>Track the prices of commodities like oil, gold, etc.</p>
+                <p id="commodities-info">Loading...</p>
+                <button class="btn"><a href="offerings/commodities.html" class="btn">Learn More</a></button>
+            </div>
+            <div class="card" id="economics-card">
+                <h3>Economic Indicators</h3>
+                <p>Stay updated with the latest economic indicators.</p>
+                <p id="economic-info">Loading...</p>
+                <button class="btn"><a href="offerings/economic-indicators.html" class="btn">Learn More</a></button>
+            </div>
+        </div>
+      </section>
+    
+      
+    
+      <!-- Sell/Buy Stocks Section -->
+      <section id="trade">
+        <h2>Sell or Buy Stocks</h2>
+        <p>Access real-time stock data and execute trades effortlessly.</p>
+        
+        <!-- Real-Time Stock Data -->
+        <div class="stock-table">
+          <h3>Live Stock Data</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Stock</th>
+                <th>Current Price</th>
+                <th>% Change</th>
+                <th>Volume</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ABC Corp</td>
+                <td>$125.50</td>
+                <td>+2.5%</td>
+                <td>1.2M</td>
+              </tr>
+              <tr>
+                <td>XYZ Ltd</td>
+                <td>$89.30</td>
+                <td>-1.3%</td>
+                <td>800K</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      
+        <!-- Trade Form -->
+        <div class="trade-form">
+          <h3>Place Your Trade</h3>
+          <form>
+            <label for="stock-name">Stock Name:</label>
+            <input type="text" id="stock-name" placeholder="Enter Stock Name" required>
+            
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" placeholder="Enter Quantity" required>
+            
+            <label for="price">Price:</label>
+            <input type="number" step="0.01" id="price" placeholder="Enter Price" required>
+            
+            <button type="submit" class="buy-btn">Buy</button>
+            <button type="submit" class="sell-btn">Sell</button>
+          </form>
+        </div>
+      
+        <!-- Profit/Loss Calculator -->
+        <div class="calculator">
+          <h3>Profit/Loss Calculator</h3>
+          <form>
+            <label for="buy-price">Buying Price:</label>
+            <input type="number" step="0.01" id="buy-price" placeholder="Enter Buying Price" required>
+            
+            <label for="sell-price">Selling Price:</label>
+            <input type="number" step="0.01" id="sell-price" placeholder="Enter Selling Price" required>
+            
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="calc-quantity" placeholder="Enter Quantity" required>
+            
+            <button type="button" onclick="calculateProfit()">Calculate</button>
+          </form>
+          <p id="calc-result"></p>
+        </div>
+      
+        <!-- Recommendations -->
+        <div class="recommendations">
+          <h3>Stocks to Watch</h3>
+          <ul>
+            <li>ABC Corp - Expected Growth: +10%</li>
+            <li>XYZ Ltd - Strong Buy Signal</li>
+            <li>LMN Inc - Dividend Paying Stock</li>
+          </ul>
+        </div>
+      </section>
+      
+
+      <section id="gainers-losers">
+        <h2>Top Gainers and Losers</h2>
+    
+        <div id="top-gainers" class="stock-cards-container">
+            <h3>Top Gainers</h3>
+            <!-- Top Gainers cards will be inserted here -->
+        </div>
+    
+        <div id="top-losers" class="stock-cards-container">
+            <h3>Top Losers</h3>
+            <!-- Top Losers cards will be inserted here -->
+        </div>
+      </section>
+    
+  
+    
+      <!-- Support Section -->
+      <section class="testimonial-section">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"E-Stock Exchange has transformed my trading experience. The zero brokerage feature is a game-changer!"</p>
+                        <p class="customer-name">- Ramesh, Investor</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"I started trading within minutes. The platform is fast, user-friendly, and has all the features I need."</p>
+                        <p class="customer-name">- Priya, Trader</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <p>"Excellent customer support and a wide range of investment options. Highly recommend E-Stock Exchange!"</p>
+                        <p class="customer-name">- Vinay, Stock Enthusiast</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+      <section id="support">
+        <h2>Support</h2>
+        <p>Need assistance? Reach out to our 24/7 customer support team for any queries, issues, or feedback.</p>
+      
+        <div class="support-content">
+          <h3>How Can We Help You?</h3>
+          <ul>
+            <li><strong>Account Issues:</strong> Trouble accessing your account? Contact us for a quick resolution.</li>
+            <li><strong>Trading Support:</strong> Need help with placing or managing trades? Our experts are here to guide you.</li>
+            <li><strong>Technical Assistance:</strong> Facing technical difficulties on our platform? Let us assist you.</li>
+            <li><strong>Feedback:</strong> Share your thoughts and help us improve your experience.</li>
+          </ul>
+        </div>
+      
+        <div class="email-support">
+          <h3>Contact Us via Email</h3>
+          <p>Click the button below to send an email to our support team:</p>
+          <a href="mailto:smirthireddy@gmail.com" class="email-button">Send Email</a>
+        </div>
+      </section>
+      
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Garantir Stock Exchange. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- JavaScript for functionality -->
+  <script src="src/main.js"></script> <!-- Link to main.js -->
+  <style>
+    #support {
+      padding: 2rem;
+      background-color: #1C3B57;
+      color: white;
+      font-size: 1.1rem;
+    }
+  
+    #support h2 {
+      font-size: 2.5rem;
+      color: orange;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+  
+    .support-content {
+      margin: 1rem 0;
+    }
+  
+    .support-content h3 {
+      font-size: 1.8rem;
+      color: orange;
+      margin-bottom: 1rem;
+    }
+  
+    .support-content ul {
+      list-style: none;
+      padding: 0;
+    }
+  
+    .support-content ul li {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .email-support {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  
+    .email-support h3 {
+      font-size: 1.5rem;
+      color: orange;
+      margin-bottom: 1rem;
+    }
+  
+    .email-button {
+      background-color: orange;
+      color: white;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+  
+    .email-button:hover {
+      background-color: darkorange;
+    }
+  </style>
+  <style>
+    /* General Section Styling */
+    /* Section Styling */
+  #offering {
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #0A2540; /* Dark Blue background for the section */
+  }
+
+  #offering h2 {
+    color: orange; /* Orange for the heading */
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  /* Cards Container Styling */
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows the cards to wrap into new rows */
+    justify-content: center; /* Centers the cards horizontally */
+    gap: 20px; /* Adds spacing between cards */
+  }
+
+  /* Card Styling */
+  .card {
+    background-color: #1C3B57; /* Dark grayish-blue background */
+    color: white; /* White text color */
+    padding: 20px;
+    border-radius: 8px;
+    width: calc(50% - 20px); /* Ensures two cards per row, with a gap */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+  }
+
+  .card h3 {
+    color: orange; /* Orange for the card titles */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    color: #ddd; /* Light gray text for the paragraph */
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  /* Button Styling */
+  .card .btn {
+    background-color: orange; /* Orange button background */
+    color: white; /* White text color for button */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .card .btn:hover {
+    background-color: #d95f0a; /* Darker orange for hover effect */
+  }
+
+  /* General Section Styling */
+  section#trade {
+    background-color: #0A2540; /* Dark Blue background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+
+  section#trade h2, section#trade h3 {
+    color: orange; /* Orange for headings */
+    text-align: center;
+  }
+
+  section#trade p {
+    text-align: center;
+    color: white; /* White text for paragraphs */
+    margin-bottom: 20px;
+  }
+
+  /* Stock Table Styling */
+  .stock-table {
+    background-color: #0A2540; /* Dark Blue background */
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px auto;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    overflow-x: auto;
+  }
+
+  .stock-table table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .stock-table th, .stock-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    color: white; /* White text for table data */
+  }
+
+  .stock-table th {
+    background-color: orange; /* Orange background for table headers */
+    color: white; /* White text for header cells */
+  }
+
+  .stock-table td {
+    background-color: #1C3B57; /* Slightly lighter than the section */
+    color: white; /* White text for table cells */
+  }
+
+  /* Trade Form Styling */
+  .trade-form {
+    background-color: #0A2540; /* Dark Blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 500px;
+  }
+
+  .trade-form form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .trade-form label {
+    margin-bottom: 8px;
+    color: orange; /* Orange for labels */
+    font-weight: bold;
+  }
+
+  .trade-form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #0A2540; /* Dark Blue border */
+    border-radius: 5px;
+    color: white; /* White text for input fields */
+  }
+
+  .trade-form button {
+    padding: 10px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .trade-form .buy-btn {
+    background-color: orange; /* Orange background for Buy button */
+    color: white;
+  }
+
+  .trade-form .sell-btn {
+    background-color: #f44336; /* Red background for Sell button */
+    color: white;
+  }
+
+  .trade-form button:hover {
+    opacity: 0.9;
+  }
+
+  /* Calculator Styling */
+  .calculator {
+    background-color: #0A2540; /* Dark Blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 500px;
+  }
+
+  .calculator label {
+    margin-bottom: 8px;
+    color: orange; /* Orange for labels */
+    font-weight: bold;
+  }
+
+  .calculator input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: white; /* White text for input fields */
+  }
+
+  .calculator button {
+    background-color: #2196f3; /* Blue for Calculator button */
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .calculator button:hover {
+    opacity: 0.9;
+  }
+
+  .calculator p {
+    font-weight: bold;
+    margin-top: 10px;
+    color: orange; /* Orange for Calculator results */
+  }
+
+  /* Recommendations Styling */
+  .recommendations {
+    background-color: #0A2540; /* Dark Blue background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+  }
+
+  .recommendations ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .recommendations li {
+    color: white; /* White text for list items */
+    font-size: 1.1rem;
+  }
+
+  .recommendations li a {
+    color: orange; /* Orange links for recommendations */
+    text-decoration: none;
+  }
+
+  .recommendations li a:hover {
+    text-decoration: underline;
+  }
+
+
+  /* Responsive Styling */
+  @media (max-width: 768px) {
+    .stock-table table {
+      font-size: 14px;
+    }
+
+    .trade-form, .calculator, .recommendations {
+      padding: 15px;
+    }
+  }
+
+  </style>
+  <script>
+    window.onload = function() {
+      getTopStocks();
+    };
+    const userProfile = document.getElementById('userProfile');
+    const profileModal = document.getElementById('profileModal');
+    const updateProfileForm = document.getElementById('updateProfileForm');
+    
+    // Toggle Profile Modal
+    userProfile.addEventListener('click', () => {
+      profileModal.style.display = profileModal.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Update Profile Functionality
+    updateProfileForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const updatedName = document.getElementById('updateName').value;
+      const updatedEmail = document.getElementById('updateEmail').value;
+      const updatedPhone = document.getElementById('updatePhone').value;
+      const updatedState = document.getElementById('updateState').value;
+      const updatedCountry = document.getElementById('updateCountry').value;
+
+      document.getElementById('userName').textContent = updatedName;
+      document.getElementById('userEmail').textContent = updatedEmail;
+      document.getElementById('userPhone').textContent = updatedPhone;
+      document.getElementById('userState').textContent = updatedState;
+      document.getElementById('userCountry').textContent = updatedCountry;
+
+      // Clear the form after update
+      updateProfileForm.reset();
+
+      // Close the modal after update
+      profileModal.style.display = 'none';
+    });
+    
+  
+  </script>
+  
+</body>
+</html>

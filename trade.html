@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mock Trading Platform</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #0A2540;
+    }
+    header {
+      background-color: rgb(222, 128, 40);
+      color: rgb(6, 14, 33);
+      padding: 10px 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .form-container,
+    .portfolio-container {
+      margin-bottom: 20px;
+      padding: 20px;
+      background:#123457;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(95, 93, 93, 0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    .hidden {
+      display: none;
+    }
+    .chart-container {
+      margin-top: 30px;
+      width:100%;
+    }
+    #portfolio-summary {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+    .nav-links li {
+      margin-left: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-size: 16px;
+    }
+    .nav-links a:hover {
+      color: #2c4972;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+        <div class="logo">Garantir Stock Exchange</div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="offering.html">Offering</a></li>
+          <li><a href="trade.html" class="active">Sell/Buy Stocks</a></li>
+          <li><a href="gainers-losers.html">Top Gainers/Losers</a></li>
+          <li><a href="support.html">Support</a></li>
+        </ul>
+      </div>
+    <h1>Mock Trading Platform</h1>
+  </header>
+  <main>
+    <div class="container">
+      <!-- Form for buying stocks -->
+      <div class="form-container">
+        <h2>Buy/Sell Stocks</h2>
+        <form id="trade-form">
+          <label for="stock-symbol">Stock Symbol:</label>
+          <input type="text" id="stock-symbol" placeholder="Enter stock symbol (e.g., AAPL)" required>
+          <label for="quantity">Quantity:</label>
+          <input type="number" id="quantity" placeholder="Enter quantity" required>
+          <button type="button" id="buy-stock">Buy</button>
+          <button type="button" id="sell-stock">Sell</button>
+        </form>
+        <div id="trade-message" class="hidden"></div>
+      </div>
+      <!-- Portfolio -->
+      <div class="portfolio-container">
+        <h2>My Portfolio</h2>
+        <ul id="portfolio-list"></ul>
+        <div id="portfolio-summary"></div>
+        <div class="chart-container">
+          <canvas id="portfolio-chart"></canvas>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="trade.js"></script>
+</body>
+</html>
